@@ -17,6 +17,11 @@
     <script src="scripts/doT.min.js" type="text/javascript"></script>
     <script src="scripts/nanoajax.min.js" type="text/javascript"></script>
 
+    <script id="tmplError" type="text/x-dot-template">
+		<h2>Error {{=it.code}}</h2>
+		{{=it.message}}
+    </script>
+
     <script id="tmplUserInfo" type="text/x-dot-template">
 		<h2>{{=it.login}}</h2>
         
@@ -69,25 +74,44 @@
     
 </head>
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <div id="userinfo" class="userInfo"></div>
         <div id="repos" class="repoList"></div>
     </div>
 
 </body>
     <script type="text/javascript">
+        function handleError(url, code, response) {
+            document.getElementById('container').innerHTML = errorFn({
+                    code : code,
+                    message : 'Could not load "' + url + '": "' + response + '"!'
+                });
+        }
+
         // content template
         var userFn = doT.template(document.getElementById('tmplUserInfo').text);
         var reposFn = doT.template(document.getElementById('tmplRepos').text);
+        var errorFn = doT.template(document.getElementById('tmplError').text);
+        var ghUrl = 'https://api.github.com/users/notisrac';
 
-        nanoajax.ajax({url:'https://api.github.com/users/notisrac', cors: true}, function (code, responseText) { 
+        nanoajax.ajax({url: ghUrl, cors: true}, function (code, responseText) { 
+            if (200 != code) {
+                // handle errors
+                handleError(ghUrl, code, responseText);
+                return;
+            }
             // convert the response data to json
             var userData = JSON.parse(responseText);
             // pass it to the templating engine
             document.getElementById('userinfo').innerHTML = userFn(userData);
-            
+
             // get the repos
             nanoajax.ajax({url: userData.repos_url, cors: true}, function (code, responseText) { 
+                if (200 != code) {
+                // handle errors
+                handleError(userData.repos_url, code, responseText);
+                return;
+            }
                 var reposList = JSON.parse(responseText);
                 // pass it to the templating engine
                 document.getElementById('repos').innerHTML = reposFn(reposList);
