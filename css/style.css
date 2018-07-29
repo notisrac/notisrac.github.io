@@ -1,0 +1,117 @@
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-size: 14px;
+    line-height: 1.5;
+    color: #24292e;
+    background-color: #fff;
+    word-wrap: break-word;
+    min-width: 1020px;
+}
+
+.container {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    margin-top: 24px !important;
+    max-width: 1012px;
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    display: block;
+}
+
+.userInfo {
+    float: left !important;
+    padding-right: 16px !important;
+    width: 25%;
+    display: block;
+    box-sizing: border-box;
+    color: #666;
+}
+
+.userImage {
+    border-style: none;
+    border-radius: 6px !important;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.bio {
+    padding-top: 10px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 12px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #6a737d;
+}
+
+li {
+    list-style: none;
+}
+
+.repoList {
+    padding-left: 8px !important;
+    float: left !important;
+    width: 75%;
+    box-sizing: border-box;
+    display: block;
+}
+
+ul {
+    display: block;
+    list-style-type: none;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.border-bottom {
+    border-bottom: 1px #e1e4e8 solid !important;
+}
+
+.div-inline-block {
+    display: inline-block !important;
+}
+
+.text-gray {
+    color: #586069 !important;
+}
+
+.repo-language-color {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+a {
+    color: #0366d6;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.py-4 {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+}
